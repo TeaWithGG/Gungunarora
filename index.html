@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gungun Arora — Journalist · Cinematographer · Visual Storyteller</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Cormorant:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg:       #0a0408;
-            --bg2:      #0f0610;
-            --bg3:      #140818;
-            --aubergine:#2a0d2e;
-            --plum:     #3d1245;
-            --gold:     #c8973a;
-            --gold-l:   #e0b84a;
-            --gold-d:   #a07828;
-            --silver:   #b8b8c8;
-            --silver-l: #e0e0f0;
-            --blush:    #d4849a;
-            --blush-l:  #f0b8c8;
-            --blush-d:  #a05870;
-            --parchment:#f5edd6;
-            --text:     #d8c8e0;
-            --text-dim: #8878a0;
+            --bg:        #080308;
+            --bg2:       #0d050f;
+            --bg3:       #120714;
+            --aubergine: #280b2c;
+            --plum:      #3a1040;
+            --gold:      #c8973a;
+            --gold-l:    #dfa94a;
+            --gold-d:    #9a7228;
+            --silver:    #b0b0c4;
+            --silver-l:  #dcdcf0;
+            --blush:     #cc7d96;
+            --blush-l:   #eaafc0;
+            --blush-d:   #994468;
+            --parchment: #f2e8d0;
+            --text:      #d0c0d8;
+            --text-dim:  #806880;
         }
 
         html { scroll-behavior: smooth; }
@@ -32,37 +32,11 @@
         body {
             background: var(--bg);
             color: var(--text);
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Lato', sans-serif;
             font-weight: 300;
             overflow-x: hidden;
             cursor: none;
         }
-
-        /* CUSTOM CURSOR */
-        .cursor {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            background: var(--gold);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99999;
-            transition: transform 0.1s;
-            mix-blend-mode: difference;
-        }
-
-        .cursor-ring {
-            position: fixed;
-            width: 36px;
-            height: 36px;
-            border: 1px solid rgba(200,151,58,0.4);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99998;
-            transition: all 0.15s ease;
-        }
-
-        body:hover .cursor { opacity: 1; }
 
         /* SCROLLBAR */
         ::-webkit-scrollbar { width: 3px; }
@@ -71,98 +45,89 @@
             background: linear-gradient(var(--gold), var(--blush), var(--silver));
         }
 
-        /* NAV */
+        /* CURSOR */
+        .cursor {
+            position: fixed;
+            width: 8px; height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%,-50%);
+            transition: transform 0.15s;
+        }
+        .cursor-ring {
+            position: fixed;
+            width: 36px; height: 36px;
+            border: 1px solid rgba(200,151,58,0.4);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99998;
+            transform: translate(-50%,-50%);
+            transition: all 0.18s ease;
+        }
+
+        /* NAV — logo only */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 1000;
-            padding: 28px 80px;
+            padding: 28px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.6s ease;
+            transition: all 0.5s ease;
+            pointer-events: none;
         }
-
         nav.scrolled {
-            padding: 18px 80px;
-            background: rgba(10,4,8,0.92);
+            padding: 18px 60px;
+            background: rgba(8,3,8,0.94);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(200,151,58,0.08);
+            border-bottom: 1px solid rgba(200,151,58,0.07);
+            pointer-events: all;
         }
-
         .nav-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+            font-weight: 500;
             letter-spacing: 4px;
             text-decoration: none;
             background: linear-gradient(135deg, var(--gold), var(--blush), var(--silver));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200%;
-            animation: gradientShift 6s ease infinite;
+            animation: gradShift 7s ease infinite;
+            pointer-events: all;
         }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        @keyframes gradShift {
+            0%,100% { background-position: 0% 50%; }
+            50%      { background-position: 100% 50%; }
         }
-
-        .nav-links {
-            display: flex;
-            gap: 48px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            transition: all 0.4s;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: linear-gradient(to right, var(--gold), var(--blush));
-            transition: width 0.4s;
-        }
-
-        .nav-links a:hover { color: var(--parchment); }
-        .nav-links a:hover::after { width: 100%; }
 
         /* HAMBURGER */
         .hamburger {
-            display: none;
+            display: flex;
             flex-direction: column;
             gap: 5px;
             cursor: none;
             z-index: 1001;
+            pointer-events: all;
         }
-
         .hamburger span {
-            width: 28px;
-            height: 1px;
+            width: 26px; height: 1px;
             background: var(--gold);
-            transition: all 0.4s;
             display: block;
+            transition: all 0.4s;
         }
-
-        .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+        .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px,4px); }
         .hamburger.open span:nth-child(2) { opacity: 0; }
-        .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+        .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px,-4px); }
 
+        /* MOBILE MENU */
         .mobile-menu {
             position: fixed;
             inset: 0;
-            background: rgba(10,4,8,0.98);
+            background: rgba(8,3,8,0.98);
             z-index: 999;
             display: flex;
             flex-direction: column;
@@ -173,55 +138,54 @@
             pointer-events: none;
             transition: opacity 0.5s;
         }
-
-        .mobile-menu.open {
-            opacity: 1;
-            pointer-events: all;
-        }
-
+        .mobile-menu.open { opacity: 1; pointer-events: all; }
         .mobile-menu a {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 48px;
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
             color: var(--parchment);
             text-decoration: none;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             transition: color 0.3s;
         }
-
         .mobile-menu a:hover { color: var(--gold); }
 
-        /* ==================== HERO ==================== */
+        /* ===== HERO ===== */
         #hero {
-            height: 100vh;
+            min-height: 100vh;
             position: relative;
             display: flex;
             align-items: center;
             overflow: hidden;
+            padding: 0;
         }
 
-        .hero-bg-layer {
+        .hero-bg {
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse at 65% 35%, rgba(61,18,69,0.6) 0%, transparent 55%),
-                radial-gradient(ellipse at 25% 75%, rgba(200,151,58,0.08) 0%, transparent 45%),
-                radial-gradient(ellipse at 80% 80%, rgba(212,132,154,0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at 60% 30%, rgba(58,16,64,0.65) 0%, transparent 55%),
+                radial-gradient(ellipse at 20% 80%, rgba(200,151,58,0.07) 0%, transparent 45%),
+                radial-gradient(ellipse at 85% 75%, rgba(204,125,150,0.05) 0%, transparent 40%),
                 var(--bg);
         }
 
         .hero-grain {
             position: absolute;
             inset: 0;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            background-size: 200px;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 180px;
+            pointer-events: none;
         }
 
-        .hero-content {
+        .hero-inner {
             position: relative;
             z-index: 2;
-            padding: 0 80px;
-            max-width: 1000px;
+            width: 100%;
+            padding: 140px 60px 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .hero-pre {
@@ -229,100 +193,92 @@
             letter-spacing: 6px;
             text-transform: uppercase;
             color: var(--blush);
-            margin-bottom: 32px;
+            margin-bottom: 36px;
             opacity: 0;
-            animation: silkRise 1.2s cubic-bezier(0.16,1,0.3,1) forwards 0.4s;
+            animation: silkRise 1.2s cubic-bezier(0.16,1,0.3,1) forwards 0.3s;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 18px;
         }
-
         .hero-pre::before {
             content: '';
-            width: 48px;
-            height: 1px;
+            width: 40px; height: 1px;
             background: linear-gradient(to right, var(--blush), transparent);
+            flex-shrink: 0;
         }
 
         .hero-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(72px, 12vw, 160px);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(64px, 10vw, 140px);
             font-weight: 700;
-            line-height: 0.88;
+            line-height: 0.9;
             letter-spacing: -2px;
-            margin-bottom: 40px;
+            margin-bottom: 36px;
             opacity: 0;
-            animation: silkRise 1.4s cubic-bezier(0.16,1,0.3,1) forwards 0.6s;
+            animation: silkRise 1.4s cubic-bezier(0.16,1,0.3,1) forwards 0.5s;
         }
-
-        .hero-name .line1 {
+        .hero-name .n1 {
             display: block;
-            background: linear-gradient(135deg, var(--parchment) 0%, var(--gold) 40%, var(--parchment) 80%);
+            background: linear-gradient(135deg, var(--parchment) 0%, var(--gold) 45%, var(--parchment) 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200%;
-            animation: silkRise 1.4s cubic-bezier(0.16,1,0.3,1) forwards 0.6s,
-                       nameShimmer 8s ease infinite 2s;
+            animation: silkRise 1.4s cubic-bezier(0.16,1,0.3,1) forwards 0.5s,
+                       shimA 9s ease infinite 2s;
         }
-
-        .hero-name .line2 {
+        .hero-name .n2 {
             display: block;
             background: linear-gradient(135deg, var(--silver) 0%, var(--blush-l) 50%, var(--silver) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200%;
-            animation: silkRise 1.4s cubic-bezier(0.16,1,0.3,1) forwards 0.8s,
-                       nameShimmer2 8s ease infinite 3s;
+            animation: silkRise 1.4s cubic-bezier(0.16,1,0.3,1) forwards 0.7s,
+                       shimB 9s ease infinite 3s;
         }
-
-        @keyframes nameShimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        @keyframes shimA {
+            0%,100% { background-position: 0% 50%; }
+            50%      { background-position: 100% 50%; }
         }
-
-        @keyframes nameShimmer2 {
-            0%, 100% { background-position: 100% 50%; }
-            50% { background-position: 0% 50%; }
+        @keyframes shimB {
+            0%,100% { background-position: 100% 50%; }
+            50%      { background-position: 0% 50%; }
         }
 
         .hero-tagline {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(20px, 2.5vw, 32px);
-            font-weight: 300;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(18px, 2.2vw, 28px);
+            font-weight: 400;
             font-style: italic;
             color: var(--parchment);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             opacity: 0;
-            animation: silkRise 1.2s cubic-bezier(0.16,1,0.3,1) forwards 1s;
-            line-height: 1.5;
+            animation: silkRise 1.2s cubic-bezier(0.16,1,0.3,1) forwards 0.9s;
+            line-height: 1.55;
+            max-width: 640px;
         }
-
-        .hero-tagline em {
-            color: var(--gold);
-            font-style: normal;
-        }
+        .hero-tagline em { color: var(--gold); font-style: normal; }
 
         .hero-sub {
             font-size: 13px;
             letter-spacing: 2px;
             color: var(--text-dim);
-            margin-bottom: 56px;
+            margin-bottom: 44px;
             opacity: 0;
-            animation: silkRise 1.2s cubic-bezier(0.16,1,0.3,1) forwards 1.1s;
+            animation: silkRise 1.2s cubic-bezier(0.16,1,0.3,1) forwards 1s;
+            max-width: 560px;
         }
 
         .hero-roles {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 56px;
+            margin-bottom: 48px;
             opacity: 0;
-            animation: silkRise 1.2s cubic-bezier(0.16,1,0.3,1) forwards 1.2s;
+            animation: silkRise 1.2s cubic-bezier(0.16,1,0.3,1) forwards 1.1s;
         }
-
         .role-pill {
-            padding: 8px 22px;
-            border: 1px solid rgba(200,151,58,0.25);
+            padding: 7px 20px;
+            border: 1px solid rgba(200,151,58,0.22);
             font-size: 11px;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -331,7 +287,6 @@
             background: rgba(200,151,58,0.04);
             transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
         }
-
         .role-pill:hover {
             background: rgba(200,151,58,0.12);
             border-color: var(--gold);
@@ -340,52 +295,106 @@
 
         .hero-ctas {
             display: flex;
-            gap: 20px;
+            gap: 18px;
             flex-wrap: wrap;
             opacity: 0;
-            animation: silkRise 1.2s cubic-bezier(0.16,1,0.3,1) forwards 1.4s;
+            animation: silkRise 1.2s cubic-bezier(0.16,1,0.3,1) forwards 1.3s;
+            margin-bottom: 80px;
+        }
+
+        .hero-scroll-row {
+            opacity: 0;
+            animation: silkRise 1s ease forwards 2s;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .scroll-line {
+            width: 56px; height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold));
+            position: relative;
+            overflow: hidden;
+        }
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold-l);
+            animation: scan 2.2s ease infinite;
+        }
+        @keyframes scan {
+            0%   { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+        .scroll-txt {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+
+        /* side stats — desktop only, absolutely positioned */
+        .hero-side-stats {
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            opacity: 0;
+            animation: silkRise 1.2s cubic-bezier(0.16,1,0.3,1) forwards 1.6s;
+            z-index: 2;
+        }
+        .hss-item { text-align: right; }
+        .hss-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 400;
+            background: linear-gradient(135deg, var(--gold), var(--blush));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+        .hss-lbl {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+        .hss-div {
+            width: 1px; height: 32px;
+            background: linear-gradient(to bottom, transparent, rgba(200,151,58,0.4), transparent);
+            margin-left: auto;
         }
 
         @keyframes silkRise {
-            from { opacity: 0; transform: translateY(40px); filter: blur(8px); }
-            to   { opacity: 1; transform: translateY(0);    filter: blur(0);   }
+            from { opacity:0; transform: translateY(40px); filter: blur(8px); }
+            to   { opacity:1; transform: translateY(0);    filter: blur(0);   }
         }
 
+        /* BUTTONS */
         .btn-silk {
-            padding: 18px 48px;
+            padding: 16px 44px;
             background: linear-gradient(135deg, var(--gold-d), var(--gold), var(--gold-l));
             color: var(--bg);
             text-decoration: none;
             font-size: 11px;
             letter-spacing: 3px;
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 400;
             border-radius: 2px;
             transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
-            background-size: 200%;
-            position: relative;
-            overflow: hidden;
+            display: inline-block;
         }
-
-        .btn-silk::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--gold-l), var(--blush-l));
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
         .btn-silk:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(200,151,58,0.25), 0 4px 20px rgba(200,151,58,0.15);
+            box-shadow: 0 20px 60px rgba(200,151,58,0.22);
         }
-
-        .btn-silk:hover::before { opacity: 1; }
-
         .btn-linen {
-            padding: 18px 48px;
-            border: 1px solid rgba(212,132,154,0.35);
+            padding: 16px 44px;
+            border: 1px solid rgba(204,125,150,0.35);
             color: var(--blush-l);
             text-decoration: none;
             font-size: 11px;
@@ -393,129 +402,73 @@
             text-transform: uppercase;
             border-radius: 2px;
             transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+            display: inline-block;
         }
-
         .btn-linen:hover {
-            background: rgba(212,132,154,0.08);
+            background: rgba(204,125,150,0.08);
             border-color: var(--blush);
             transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(212,132,154,0.1);
         }
 
-        .hero-float-right {
-            position: absolute;
-            right: 80px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-            opacity: 0;
-            animation: silkRise 1.2s cubic-bezier(0.16,1,0.3,1) forwards 1.6s;
-        }
+        /* ===== SECTIONS SHARED ===== */
+        .section-pad { padding: 140px 60px; }
 
-        .hero-stat-side {
-            text-align: right;
-        }
-
-        .hero-stat-n {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 52px;
-            font-weight: 300;
-            background: linear-gradient(135deg, var(--gold), var(--blush));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
-        }
-
-        .hero-stat-l {
+        .eyebrow {
             font-size: 10px;
-            letter-spacing: 2px;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            color: var(--text-dim);
-            margin-top: 4px;
-        }
-
-        .hero-divider {
-            width: 1px;
-            height: 40px;
-            background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-            margin-left: auto;
-        }
-
-        .hero-scroll {
-            position: absolute;
-            bottom: 48px;
-            left: 80px;
+            color: var(--blush);
+            margin-bottom: 22px;
             display: flex;
             align-items: center;
-            gap: 16px;
-            opacity: 0;
-            animation: silkRise 1s ease forwards 2s;
+            gap: 14px;
         }
-
-        .hero-scroll-line {
-            width: 60px;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold));
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-scroll-line::after {
+        .eyebrow::before {
             content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--gold-l);
-            animation: scanline 2s ease infinite;
+            width: 30px; height: 1px;
+            background: linear-gradient(to right, var(--blush), transparent);
+            flex-shrink: 0;
         }
 
-        @keyframes scanline {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(200%); }
+        .sec-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 4vw, 60px);
+            font-weight: 500;
+            line-height: 1.12;
+            margin-bottom: 48px;
+            color: var(--parchment);
+        }
+        .sec-title em { font-style: italic; color: var(--gold); }
+        .sec-title .sil {
+            background: linear-gradient(135deg, var(--silver), var(--blush-l));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hero-scroll span {
-            font-size: 10px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--text-dim);
-        }
-
-        /* ==================== ABOUT ==================== */
+        /* ===== ABOUT ===== */
         #about {
-            padding: 160px 80px;
+            padding: 140px 60px;
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 100px;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 90px;
             align-items: start;
             background: var(--bg);
             position: relative;
             overflow: hidden;
         }
-
         #about::before {
             content: '';
             position: absolute;
-            top: -200px;
-            right: -200px;
-            width: 600px;
-            height: 600px;
+            top: -150px; right: -150px;
+            width: 500px; height: 500px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(61,18,69,0.3) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(58,16,64,0.25) 0%, transparent 70%);
             pointer-events: none;
         }
 
-        .about-visual {
-            position: sticky;
-            top: 120px;
-        }
+        .about-visual { position: sticky; top: 110px; }
 
-        .about-img-frame {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
+        .about-img-wrap { position: relative; display: inline-block; width: 100%; }
 
         .about-img {
             width: 100%;
@@ -523,2120 +476,87 @@
             object-fit: cover;
             object-position: top;
             display: block;
-            filter: saturate(0.85) contrast(1.1) sepia(0.1);
-            transition: filter 0.8s ease;
+            filter: saturate(0.85) contrast(1.1) sepia(0.08);
+            transition: filter 0.7s ease;
         }
-
         .about-img:hover { filter: saturate(1) contrast(1.1) sepia(0); }
 
-        .about-img-overlay {
+        .about-img-fade {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, transparent 60%, rgba(10,4,8,0.4));
+            background: linear-gradient(to bottom, transparent 55%, rgba(8,3,8,0.38));
             pointer-events: none;
         }
 
-        .about-frame-border {
+        .about-border {
             position: absolute;
-            top: 20px;
-            left: -20px;
-            right: 20px;
-            bottom: -20px;
-            border: 1px solid rgba(200,151,58,0.2);
+            top: 18px; left: -18px; right: 18px; bottom: -18px;
+            border: 1px solid rgba(200,151,58,0.18);
             pointer-events: none;
             transition: all 0.6s cubic-bezier(0.16,1,0.3,1);
         }
-
-        .about-img-frame:hover .about-frame-border {
-            top: 14px;
-            left: -14px;
-            right: 14px;
-            bottom: -14px;
-            border-color: rgba(200,151,58,0.5);
+        .about-img-wrap:hover .about-border {
+            top: 12px; left: -12px; right: 12px; bottom: -12px;
+            border-color: rgba(200,151,58,0.45);
         }
 
-        .about-frame-corner {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-        }
+        .corner { position: absolute; width: 18px; height: 18px; }
+        .corner.tl { top:-1px; left:-1px; border-top:2px solid var(--gold); border-left:2px solid var(--gold); }
+        .corner.tr { top:-1px; right:-1px; border-top:2px solid var(--blush); border-right:2px solid var(--blush); }
+        .corner.bl { bottom:-1px; left:-1px; border-bottom:2px solid var(--blush); border-left:2px solid var(--blush); }
+        .corner.br { bottom:-1px; right:-1px; border-bottom:2px solid var(--gold); border-right:2px solid var(--gold); }
 
-        .about-frame-corner.tl { top: -1px; left: -1px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
-        .about-frame-corner.tr { top: -1px; right: -1px; border-top: 2px solid var(--blush); border-right: 2px solid var(--blush); }
-        .about-frame-corner.bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--blush); border-left: 2px solid var(--blush); }
-        .about-frame-corner.br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
-
-        .about-img-caption {
-            margin-top: 32px;
+        .about-caption {
+            margin-top: 28px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 14px;
         }
-
-        .about-img-caption-text {
-            font-size: 11px;
+        .about-caption-txt {
+            font-size: 10px;
             letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--text-dim);
+            white-space: nowrap;
+        }
+        .about-caption-line {
+            flex: 1; height: 1px;
+            background: linear-gradient(to right, rgba(200,151,58,0.25), transparent);
         }
 
-        .about-img-caption-line {
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(to right, rgba(200,151,58,0.3), transparent);
-            margin-left: 20px;
-        }
-
-        .about-text-col { padding-top: 24px; }
-
-        .eyebrow {
-            font-size: 11px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: var(--blush);
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .eyebrow::before {
-            content: '';
-            width: 32px;
-            height: 1px;
-            background: linear-gradient(to right, var(--blush), transparent);
-        }
-
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(40px, 4vw, 64px);
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 48px;
-            color: var(--parchment);
-        }
-
-        .section-title em {
-            font-style: italic;
-            color: var(--gold);
-        }
-
-        .section-title .silver {
-            background: linear-gradient(135deg, var(--silver), var(--blush-l));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .about-text-col { padding-top: 16px; }
 
         .para {
-            font-size: 16px;
+            font-size: 15px;
             line-height: 2;
             color: var(--text);
             opacity: 0.82;
-            margin-bottom: 24px;
+            margin-bottom: 22px;
         }
-
-        .para strong {
-            color: var(--gold);
-            font-weight: 400;
-        }
-
-        .para .blush { color: var(--blush-l); }
+        .para strong { color: var(--gold); font-weight: 400; }
+        .para .bls   { color: var(--blush-l); }
 
         .pull-quote {
-            margin: 48px 0;
-            padding: 32px 40px;
+            margin: 44px 0;
+            padding: 28px 36px;
             border-left: 2px solid var(--gold);
-            background: linear-gradient(135deg, rgba(200,151,58,0.04), rgba(212,132,154,0.03));
+            background: linear-gradient(135deg, rgba(200,151,58,0.04), rgba(204,125,150,0.03));
             position: relative;
         }
-
         .pull-quote::before {
             content: '"';
             position: absolute;
-            top: -20px;
-            left: 32px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 80px;
+            top: -16px; left: 28px;
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
             color: var(--gold);
-            opacity: 0.2;
+            opacity: 0.18;
             line-height: 1;
         }
-
         .pull-quote p {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
-            font-style: italic;
-            color: var(--blush-l);
-            line-height: 1.7;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            margin-top: 56px;
-            border: 1px solid rgba(200,151,58,0.1);
-        }
-
-        .stat-box {
-            padding: 32px 28px;
-            border-right: 1px solid rgba(200,151,58,0.1);
-            border-bottom: 1px solid rgba(200,151,58,0.1);
-            transition: background 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-box::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(200,151,58,0.06), rgba(212,132,154,0.04));
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .stat-box:hover::before { opacity: 1; }
-
-        .stat-n {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 56px;
-            font-weight: 300;
-            background: linear-gradient(135deg, var(--gold), var(--blush));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
-        }
-
-        .stat-l {
-            font-size: 11px;
-            letter-spacing: 1px;
-            color: var(--text-dim);
-            margin-top: 10px;
-            line-height: 1.5;
-        }
-
-        /* ==================== TIMELINE ==================== */
-        #timeline {
-            padding: 160px 80px;
-            background: var(--bg2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        #timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 200px;
-            bottom: 80px;
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, var(--gold), var(--blush), var(--silver), transparent);
-            transform: translateX(-50%);
-        }
-
-        .timeline-header {
-            text-align: center;
-            margin-bottom: 120px;
-        }
-
-        .tl-items {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            max-width: 1100px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .tl-item {
-            display: grid;
-            grid-template-columns: 1fr 60px 1fr;
-            gap: 0;
-            align-items: start;
-            margin-bottom: 80px;
-            opacity: 0;
-            transform: translateY(60px);
-            transition: all 0.9s cubic-bezier(0.16,1,0.3,1);
-        }
-
-        .tl-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .tl-item:nth-child(even) .tl-content { grid-column: 3; grid-row: 1; }
-        .tl-item:nth-child(even) .tl-empty   { grid-column: 1; grid-row: 1; }
-        .tl-item:nth-child(even) .tl-dot-col { grid-column: 2; grid-row: 1; }
-
-        .tl-content {
-            background: var(--bg3);
-            padding: 40px;
-            border: 1px solid rgba(200,151,58,0.08);
-            transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tl-content::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(61,18,69,0.4), rgba(200,151,58,0.04));
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .tl-content:hover::before { opacity: 1; }
-        .tl-content:hover { border-color: rgba(200,151,58,0.25); transform: translateY(-4px); }
-
-        .tl-empty {}
-
-        .tl-dot-col {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 40px;
-        }
-
-        .tl-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--blush));
-            flex-shrink: 0;
-            box-shadow: 0 0 20px rgba(200,151,58,0.4);
-            transition: all 0.4s;
-        }
-
-        .tl-content:hover ~ .tl-dot-col .tl-dot,
-        .tl-dot:hover {
-            transform: scale(1.5);
-            box-shadow: 0 0 40px rgba(200,151,58,0.6);
-        }
-
-        .tl-year {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 13px;
-            color: var(--gold);
-            letter-spacing: 3px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-
-        .tl-emoji {
-            font-size: 28px;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .tl-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            color: var(--parchment);
-            margin-bottom: 12px;
-            line-height: 1.2;
-        }
-
-        .tl-body {
-            font-size: 14px;
-            line-height: 1.9;
-            color: var(--text);
-            opacity: 0.75;
-        }
-
-        .tl-expand {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.7s cubic-bezier(0.16,1,0.3,1);
-        }
-
-        .tl-expand.open { max-height: 400px; }
-
-        .tl-expand-inner {
-            padding-top: 20px;
-            border-top: 1px solid rgba(200,151,58,0.1);
-            margin-top: 20px;
-            font-size: 14px;
-            line-height: 1.9;
-            color: var(--blush-l);
-            opacity: 0.85;
-        }
-
-        /* ==================== EXPANDABLE SECTIONS ==================== */
-        .exp-wrap {
-            background: var(--bg);
-        }
-
-        .exp-section {
-            border-bottom: 1px solid rgba(200,151,58,0.08);
-            overflow: hidden;
-        }
-
-        .exp-head {
-            padding: 48px 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: none;
-            transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .exp-head::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(61,18,69,0.2), transparent);
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .exp-head:hover::before { opacity: 1; }
-
-        .exp-head-left {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .exp-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 14px;
-            color: var(--gold);
-            opacity: 0.35;
-            letter-spacing: 2px;
-            min-width: 28px;
-        }
-
-        .exp-icon { font-size: 32px; }
-
-        .exp-title-wrap {}
-
-        .exp-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(28px, 3.5vw, 48px);
-            font-weight: 400;
-            color: var(--parchment);
-            transition: color 0.4s;
-            line-height: 1.1;
-        }
-
-        .exp-head:hover .exp-title { color: var(--gold); }
-
-        .exp-sub {
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            margin-top: 8px;
-        }
-
-        .exp-toggle {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            border: 1px solid rgba(200,151,58,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
-            flex-shrink: 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .exp-toggle svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--gold);
-            fill: none;
-            stroke-width: 1.5;
-            transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
-        }
-
-        .exp-head.active .exp-toggle {
-            background: linear-gradient(135deg, var(--gold), var(--blush));
-            border-color: transparent;
-            box-shadow: 0 8px 32px rgba(200,151,58,0.3);
-        }
-
-        .exp-head.active .exp-toggle svg {
-            stroke: var(--bg);
-            transform: rotate(180deg);
-        }
-
-        .exp-body {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.9s cubic-bezier(0.16,1,0.3,1);
-            background: var(--bg2);
-        }
-
-        .exp-body.open { max-height: 6000px; }
-
-        .exp-inner { padding: 80px; }
-
-        /* ==================== SLIDESHOW GALLERY ==================== */
-        .slideshow-wrap {
-            position: relative;
-            width: 100%;
-            height: 80vh;
-            overflow: hidden;
-            background: var(--bg);
-        }
-
-        .slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 1.2s cubic-bezier(0.16,1,0.3,1);
-        }
-
-        .slide.active { opacity: 1; }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: scale(1.05);
-            transition: transform 8s ease;
-        }
-
-        .slide.active img { transform: scale(1); }
-
-        .slide-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(10,4,8,0.3), rgba(10,4,8,0.6));
-        }
-
-        .slide-info {
-            position: absolute;
-            bottom: 60px;
-            left: 80px;
-            right: 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        .slide-counter {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 48px;
-            font-weight: 300;
-            color: var(--parchment);
-            opacity: 0.3;
-            line-height: 1;
-        }
-
-        .slide-controls {
-            display: flex;
-            gap: 12px;
-        }
-
-        .slide-btn {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            color: var(--parchment);
-            font-size: 18px;
-            cursor: none;
-            transition: all 0.4s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slide-btn:hover {
-            background: rgba(200,151,58,0.2);
-            border-color: var(--gold);
-        }
-
-        .slide-dots {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .slide-dot {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            cursor: none;
-            transition: all 0.4s;
-        }
-
-        .slide-dot.active {
-            width: 24px;
-            border-radius: 2px;
-            background: var(--gold);
-        }
-
-        .gallery-desc {
-            padding: 48px 80px;
-            background: var(--bg2);
-        }
-
-        .gallery-desc p {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 20px;
             font-style: italic;
             color: var(--blush-l);
             line-height: 1.7;
-            max-width: 700px;
-            opacity: 0.85;
-        }
-
-        /* ==================== FILMS ==================== */
-        .films-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 60px;
-        }
-
-        .film-card {}
-
-        .film-embed {
-            width: 100%;
-            aspect-ratio: 16/9;
-            border: 1px solid rgba(200,151,58,0.12);
-            overflow: hidden;
-            margin-bottom: 28px;
-        }
-
-        .film-embed iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-        }
-
-        .film-type {
-            font-size: 10px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--blush);
-            margin-bottom: 12px;
-        }
-
-        .film-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            color: var(--parchment);
-            margin-bottom: 16px;
-            line-height: 1.1;
-        }
-
-        .film-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .film-tag {
-            font-size: 10px;
-            letter-spacing: 2px;
-            padding: 4px 14px;
-            border: 1px solid rgba(200,151,58,0.2);
-            color: var(--gold);
-            text-transform: uppercase;
-            border-radius: 20px;
-        }
-
-        .film-desc {
-            font-size: 14px;
-            line-height: 1.9;
-            opacity: 0.72;
-        }
-
-        /* BTS SECTION */
-        .bts-reel {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-top: 56px;
-        }
-
-        .bts-cell {
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 4/3;
-            background: var(--plum);
-        }
-
-        .bts-cell img,
-        .bts-cell video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
-        }
-
-        .bts-cell:hover img,
-        .bts-cell:hover video { transform: scale(1.06); }
-
-        .bts-cell-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(61,18,69,0.6), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .bts-cell:hover .bts-cell-overlay { opacity: 1; }
-
-        /* ==================== JOURNALISM ==================== */
-        .tribune-mosaic {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 48px;
-        }
-
-        .trib-cell {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            background: var(--plum);
-        }
-
-        .trib-cell img {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
-            filter: sepia(0.1);
-        }
-
-        .trib-cell:hover img {
-            transform: scale(1.04);
-            filter: sepia(0);
-        }
-
-        .trib-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 24px;
-            background: linear-gradient(to top, rgba(10,4,8,0.9), transparent);
-        }
-
-        .trib-caption-tag {
-            font-size: 10px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold);
-        }
-
-        .blogs-duo {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-top: 48px;
-        }
-
-        .blog-tile {
-            padding: 48px 40px;
-            background: var(--bg3);
-            border-top: 1px solid var(--gold);
-            text-decoration: none;
-            color: var(--text);
-            display: block;
-            transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .blog-tile::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 0;
-            background: linear-gradient(135deg, rgba(61,18,69,0.5), rgba(200,151,58,0.05));
-            transition: height 0.5s cubic-bezier(0.16,1,0.3,1);
-        }
-
-        .blog-tile:hover::before { height: 100%; }
-        .blog-tile:hover { transform: translateY(-6px); box-shadow: 0 24px 80px rgba(200,151,58,0.08); }
-
-        .blog-tile-arrow {
-            position: absolute;
-            top: 28px;
-            right: 28px;
-            font-size: 20px;
-            color: var(--gold);
-            opacity: 0;
-            transition: all 0.4s;
-            transform: translate(-4px, 4px);
-        }
-
-        .blog-tile:hover .blog-tile-arrow { opacity: 1; transform: translate(0,0); }
-
-        .blog-tile-type {
-            font-size: 10px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--blush);
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .blog-tile-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            color: var(--parchment);
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
-            line-height: 1.2;
-        }
-
-        .blog-tile-desc {
-            font-size: 14px;
-            line-height: 1.8;
-            opacity: 0.62;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* ==================== SACRED ==================== */
-        .sacred-layout {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 8px;
-            margin-top: 48px;
-        }
-
-        .sacred-hero-img {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sacred-hero-img img {
-            width: 100%;
-            height: 560px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
-        }
-
-        .sacred-hero-img:hover img { transform: scale(1.04); }
-
-        .sacred-side-imgs {
-            display: grid;
-            gap: 8px;
-        }
-
-        .sacred-side-img {
-            overflow: hidden;
-        }
-
-        .sacred-side-img img {
-            width: 100%;
-            height: 276px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
-        }
-
-        .sacred-side-img:hover img { transform: scale(1.05); }
-
-        /* ==================== SPEAKING ==================== */
-        .speaking-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-        }
-
-        .speaking-text {}
-
-        .speaking-big-quote {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-style: italic;
-            line-height: 1.6;
-            color: var(--parchment);
-            margin-bottom: 32px;
-        }
-
-        .speaking-big-quote em { color: var(--gold); font-style: normal; }
-
-        .speaking-body {
-            font-size: 15px;
-            line-height: 1.95;
-            opacity: 0.75;
-            margin-bottom: 40px;
-        }
-
-        .topics-list { list-style: none; }
-
-        .topic-row {
-            padding: 24px 0;
-            border-bottom: 1px solid rgba(200,151,58,0.1);
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
-            cursor: default;
-        }
-
-        .topic-row:hover {
-            padding-left: 16px;
-            border-color: rgba(200,151,58,0.3);
-        }
-
-        .topic-row:hover .topic-name { color: var(--gold); }
-
-        .topic-n {
-            font-size: 11px;
-            color: var(--gold);
-            opacity: 0.4;
-            min-width: 24px;
-            letter-spacing: 1px;
-        }
-
-        .topic-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-            color: var(--parchment);
-            transition: color 0.4s;
-        }
-
-        /* ==================== AWARDS ==================== */
-        .awards-quote {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-style: italic;
-            color: var(--silver-l);
-            opacity: 0.7;
-            margin-bottom: 60px;
-            max-width: 600px;
-        }
-
-        .awards-cats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
-        }
-
-        .award-cat-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
-            color: var(--gold);
-            margin-bottom: 28px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid rgba(200,151,58,0.15);
-        }
-
-        .award-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
-
-        .award-item {
-            font-size: 13px;
-            line-height: 1.7;
-            opacity: 0.72;
-            padding-left: 16px;
-            position: relative;
-        }
-
-        .award-item::before {
-            content: '◆';
-            position: absolute;
-            left: 0;
-            font-size: 7px;
-            color: var(--gold);
-            top: 5px;
-        }
-
-        .award-badge {
-            display: inline-block;
-            font-size: 10px;
-            letter-spacing: 1px;
-            padding: 2px 10px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, rgba(200,151,58,0.15), rgba(212,132,154,0.1));
-            color: var(--gold);
-            border: 1px solid rgba(200,151,58,0.15);
-            margin-bottom: 6px;
-        }
-
-        /* ==================== ONLINE ==================== */
-        .online-strip {
-            background: var(--bg2);
-            padding: 100px 80px;
-        }
-
-        .online-trio {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-top: 60px;
-        }
-
-        .online-tile {
-            padding: 44px 36px;
-            background: var(--bg3);
-            border: 1px solid rgba(200,151,58,0.06);
-            text-decoration: none;
-            color: var(--text);
-            display: block;
-            transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .online-tile::after {
-            content: '↗';
-            position: absolute;
-            top: 24px;
-            right: 28px;
-            font-size: 18px;
-            color: var(--gold);
-            opacity: 0;
-            transition: all 0.4s;
-            transform: translate(-4px, 4px);
-        }
-
-        .online-tile:hover {
-            transform: translateY(-8px);
-            border-color: rgba(200,151,58,0.2);
-            box-shadow: 0 32px 80px rgba(10,4,8,0.5), 0 8px 32px rgba(200,151,58,0.06);
-        }
-
-        .online-tile:hover::after { opacity: 1; transform: translate(0,0); }
-
-        .online-platform {
-            font-size: 10px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--blush);
-            margin-bottom: 16px;
-        }
-
-        .online-handle {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            background: linear-gradient(135deg, var(--gold), var(--silver));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 16px;
-        }
-
-        .online-desc {
-            font-size: 13px;
-            line-height: 1.75;
-            opacity: 0.58;
-        }
-
-        /* ==================== CONTACT ==================== */
-        #contact {
-            padding: 180px 80px;
-            text-align: center;
-            background: var(--bg);
-            position: relative;
-            overflow: hidden;
-        }
-
-        #contact::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse at 50% 50%, rgba(61,18,69,0.4) 0%, transparent 65%),
-                radial-gradient(ellipse at 20% 90%, rgba(200,151,58,0.05) 0%, transparent 40%),
-                radial-gradient(ellipse at 80% 10%, rgba(212,132,154,0.05) 0%, transparent 40%);
-        }
-
-        .contact-inner { position: relative; z-index: 1; }
-
-        .contact-h {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(48px, 7vw, 96px);
-            font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            color: var(--parchment);
-        }
-
-        .contact-h em {
-            font-style: italic;
-            background: linear-gradient(135deg, var(--gold), var(--blush-l), var(--silver));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .contact-sub {
-            font-size: 16px;
-            opacity: 0.55;
-            max-width: 540px;
-            margin: 0 auto 64px;
-            line-height: 1.9;
-        }
-
-        .contact-email {
-            display: inline-block;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            background: linear-gradient(135deg, var(--gold), var(--blush-l));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-            transition: all 0.4s;
-            margin-bottom: 80px;
-            display: block;
-        }
-
-        .contact-email:hover { opacity: 0.7; }
-
-        .contact-row {
-            display: flex;
-            justify-content: center;
-            gap: 80px;
-            margin-bottom: 80px;
-            flex-wrap: wrap;
-        }
-
-        .c-item-label {
-            font-size: 10px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--gold);
-            opacity: 0.5;
-            margin-bottom: 10px;
-        }
-
-        .c-item-val {
-            font-size: 16px;
-            color: var(--silver-l);
-        }
-
-        .contact-ctas {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* ==================== FOOTER ==================== */
-        footer {
-            padding: 36px 80px;
-            border-top: 1px solid rgba(200,151,58,0.08);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--bg);
-        }
-
-        .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 16px;
-            letter-spacing: 4px;
-            background: linear-gradient(135deg, var(--gold), var(--blush));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .footer-copy {
-            font-size: 11px;
-            opacity: 0.25;
-            letter-spacing: 1px;
-        }
-
-        /* ==================== EXPERIENCE CARDS ==================== */
-        .exp-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-bottom: 56px;
-        }
-
-        .exp-card {
-            padding: 44px;
-            background: var(--bg3);
-            border-left: 2px solid var(--gold);
-            transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .exp-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(200,151,58,0.04), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .exp-card:hover::before { opacity: 1; }
-        .exp-card:hover { border-left-color: var(--blush); transform: translateX(4px); }
-
-        .exp-org {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 30px;
-            color: var(--gold);
-            margin-bottom: 6px;
-        }
-
-        .exp-role {
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--silver);
-            opacity: 0.65;
-            margin-bottom: 6px;
-        }
-
-        .exp-date {
-            font-size: 12px;
-            opacity: 0.35;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-
-        .exp-desc {
-            font-size: 15px;
-            line-height: 1.9;
-            opacity: 0.75;
-        }
-
-        .exp-quote {
-            margin-top: 24px;
-            padding: 20px 24px;
-            border-left: 1px solid var(--blush);
-            background: rgba(212,132,154,0.05);
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 18px;
-            color: var(--blush-l);
-            line-height: 1.6;
-        }
-
-        /* ==================== REVEAL ==================== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            filter: blur(4px);
-            transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1),
-                        transform 0.9s cubic-bezier(0.16,1,0.3,1),
-                        filter 0.9s cubic-bezier(0.16,1,0.3,1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
-        }
-
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-
-        /* ==================== MOBILE ==================== */
-        @media (max-width: 900px) {
-            nav { padding: 20px 28px; }
-            nav.scrolled { padding: 16px 28px; }
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
-
-            #hero { padding: 0; }
-            .hero-content { padding: 0 28px; padding-top: 120px; }
-            .hero-float-right { display: none; }
-            .hero-scroll { left: 28px; }
-
-            #about {
-                grid-template-columns: 1fr;
-                padding: 80px 28px;
-                gap: 56px;
-            }
-
-            .about-visual { position: static; }
-
-            #timeline { padding: 80px 28px; }
-            #timeline::before { left: 28px; }
-
-            .tl-items { max-width: 100%; }
-
-            .tl-item {
-                grid-template-columns: 40px 1fr;
-                gap: 0;
-            }
-
-            .tl-item .tl-content { grid-column: 2; grid-row: 1; }
-            .tl-item .tl-empty { display: none; }
-            .tl-item .tl-dot-col { grid-column: 1; grid-row: 1; }
-            .tl-item:nth-child(even) .tl-content { grid-column: 2; }
-            .tl-item:nth-child(even) .tl-empty { display: none; }
-            .tl-item:nth-child(even) .tl-dot-col { grid-column: 1; }
-
-            .exp-head { padding: 32px 28px; }
-            .exp-inner { padding: 40px 28px; }
-            .exp-head-left { gap: 20px; }
-
-            .films-grid { grid-template-columns: 1fr; }
-            .bts-reel { grid-template-columns: 1fr 1fr; }
-            .tribune-mosaic { grid-template-columns: 1fr; }
-            .blogs-duo { grid-template-columns: 1fr; }
-            .sacred-layout { grid-template-columns: 1fr; }
-            .speaking-layout { grid-template-columns: 1fr; gap: 48px; }
-            .awards-cats { grid-template-columns: 1fr; gap: 40px; }
-            .online-trio { grid-template-columns: 1fr; }
-            .online-strip { padding: 80px 28px; }
-            .slideshow-wrap { height: 60vw; }
-            .slide-info { left: 24px; right: 24px; bottom: 24px; }
-            .gallery-desc { padding: 32px 28px; }
-
-            #contact { padding: 100px 28px; }
-            .contact-row { gap: 40px; }
-
-            footer { padding: 24px 28px; flex-direction: column; gap: 8px; text-align: center; }
-        }
-    </style>
-</head>
-<body>
-
-<!-- CURSOR -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-    <a href="#about" onclick="closeMenu()">About</a>
-    <a href="#timeline" onclick="closeMenu()">Journey</a>
-    <a href="#portfolio" onclick="closeMenu()">Work</a>
-    <a href="#contact" onclick="closeMenu()">Contact</a>
-</div>
-
-<!-- NAV -->
-<nav id="nav">
-    <a href="#hero" class="nav-logo">GUNGUN ARORA</a>
-    <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#timeline">Journey</a></li>
-        <li><a href="#portfolio">Work</a></li>
-        <li><a href="#films-section">Films</a></li>
-        <li><a href="#awards-section">Awards</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-    </div>
-</nav>
-
-<!-- ==================== HERO ==================== -->
-<section id="hero">
-    <div class="hero-bg-layer"></div>
-    <div class="hero-grain"></div>
-    <div class="hero-content">
-        <p class="hero-pre">Journalist · Cinematographer · Visual Storyteller</p>
-        <h1 class="hero-name">
-            <span class="line1">Gungun</span>
-            <span class="line2">Arora</span>
-        </h1>
-        <p class="hero-tagline">I don't chase stories.<br><em>I'm already there when they happen.</em></p>
-        <p class="hero-sub">Every frame a truth. Every word a reckoning. Every room — mine.</p>
-        <div class="hero-roles">
-            <span class="role-pill">Journalist</span>
-            <span class="role-pill">Cinematographer</span>
-            <span class="role-pill">Photographer</span>
-            <span class="role-pill">Public Speaker</span>
-            <span class="role-pill">Visual Storyteller</span>
-            <span class="role-pill">Writer</span>
-        </div>
-        <div class="hero-ctas">
-            <a href="#films-section" class="btn-silk">Watch My Films</a>
-            <a href="#portfolio" class="btn-linen">View My Work</a>
-        </div>
-    </div>
-    <div class="hero-float-right">
-        <div class="hero-stat-side">
-            <div class="hero-stat-n">13</div>
-            <div class="hero-stat-l">International Delegates</div>
-        </div>
-        <div class="hero-divider"></div>
-        <div class="hero-stat-side">
-            <div class="hero-stat-n">10+</div>
-            <div class="hero-stat-l">Awards Won</div>
-        </div>
-        <div class="hero-divider"></div>
-        <div class="hero-stat-side">
-            <div class="hero-stat-n">2</div>
-            <div class="hero-stat-l">Films Directed</div>
-        </div>
-    </div>
-    <div class="hero-scroll">
-        <div class="hero-scroll-line"></div>
-        <span>Scroll to explore</span>
-    </div>
-</section>
-
-<!-- ==================== ABOUT ==================== -->
-<section id="about">
-    <div class="about-visual reveal">
-        <div class="about-img-frame">
-            <img
-                src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/Screenshot_20250316_180712_Photos.jpg"
-                alt="Gungun Arora"
-                class="about-img"
-                onerror="this.style.display='none'"
-            >
-            <div class="about-img-overlay"></div>
-            <div class="about-frame-corner tl"></div>
-            <div class="about-frame-corner tr"></div>
-            <div class="about-frame-corner bl"></div>
-            <div class="about-frame-corner br"></div>
-            <div class="about-frame-border"></div>
-        </div>
-        <div class="about-img-caption">
-            <span class="about-img-caption-text">Gungun Arora · Amritsar</span>
-            <div class="about-img-caption-line"></div>
-        </div>
-    </div>
-    <div class="about-text-col">
-        <div class="eyebrow reveal">About</div>
-        <h2 class="section-title reveal">There is a kind of person<br>who walks into a room and<br>immediately <em>reads it.</em></h2>
-        <p class="para reveal">I have always been that person. I just spent years learning how to <strong>use it.</strong></p>
-        <p class="para reveal reveal-delay-1">I grew up between Amritsar and London — two cities, two cultures, two entirely different ways of seeing the world. Somewhere in that distance, I developed something that can't be taught: <span class="blush">the instinct to pay attention when everyone else is performing.</span></p>
-        <div class="pull-quote reveal reveal-delay-2">
-            <p>A debate judge — someone whose job was to find weakness — told me I had the precision of a natural anchor and the instincts of a real journalist. I didn't celebrate. I got to work.</p>
-        </div>
-        <p class="para reveal">I'm a journalist interning at The Tribune, a cinematographer who directed her first documentary entirely solo, a photographer who shoots in silence, a public speaker who has held stages, and a visual storyteller who believes every frame, every word, and every room has a story waiting to be told <strong>right.</strong></p>
-        <p class="para reveal reveal-delay-1">My cinematography is rich, decadent, raw and uncut — soaked in culture, colour and history. My writing lives between two polar worlds. My lens witnesses what most eyes walk past. I am not confined to one role. <strong>I am fluid — and that is my greatest strength.</strong></p>
-        <div class="about-stats reveal reveal-delay-2">
-            <div class="stat-box">
-                <div class="stat-n">13</div>
-                <div class="stat-l">International Delegates Managed at Sacred Amritsar</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-n">2</div>
-                <div class="stat-l">Original Films Directed, Produced & Edited Solo</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-n">10+</div>
-                <div class="stat-l">Awards Across Debate, Media & Performance</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-n">4</div>
-                <div class="stat-l">Major College Events Hosted as Lead Anchor</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ==================== TIMELINE ==================== -->
-<section id="timeline">
-    <div class="timeline-header reveal">
-        <div class="eyebrow" style="justify-content:center;">The Journey</div>
-        <h2 class="section-title" style="text-align:center;max-width:600px;margin:0 auto;">Every chapter<br>that made me <em>this.</em></h2>
-    </div>
-    <div class="tl-items">
-
-        <div class="tl-item">
-            <div class="tl-content" onclick="toggleTL(this)">
-                <div class="tl-year">Early Years</div>
-                <span class="tl-emoji">🇬🇧</span>
-                <div class="tl-title">London & The Art of Attention</div>
-                <p class="tl-body">Four years in a city that taught me to see the world differently. Between two cultures, I developed something that can't be taught — the instinct to pay attention.</p>
-                <div class="tl-expand">
-                    <div class="tl-expand-inner">Growing up between London and Amritsar gave me two lenses. One that sees with the precision of distance. One that sees with the warmth of belonging. Both live in everything I create.</div>
-                </div>
-            </div>
-            <div class="tl-dot-col"><div class="tl-dot"></div></div>
-            <div class="tl-empty"></div>
-        </div>
-
-        <div class="tl-item">
-            <div class="tl-empty"></div>
-            <div class="tl-dot-col"><div class="tl-dot"></div></div>
-            <div class="tl-content" onclick="toggleTL(this)">
-                <div class="tl-year">2022 — 2023</div>
-                <span class="tl-emoji">🎤</span>
-                <div class="tl-title">The Debate Stage</div>
-                <p class="tl-body">A judge told me I'd make a great anchor. I walked away with two first prizes in impromptu speech competitions and an appreciation award from the Police Commissionerate of Amritsar.</p>
-                <div class="tl-expand">
-                    <div class="tl-expand-inner">1st Prize — Prantiya Sanskriti Mahotsav. 2nd Prize — Uttar Shetr Sanskriti Mahotsav. Appreciation Award for speech on Shaheed Bhagat Singh's Birthday. The stage has never intimidated me. It has always felt like home.</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tl-item">
-            <div class="tl-content" onclick="toggleTL(this)">
-                <div class="tl-year">2023 — 2024</div>
-                <span class="tl-emoji">📸</span>
-                <div class="tl-title">The First Frame</div>
-                <p class="tl-body">I picked up a camera and discovered I'd been seeing in macro all along. Every shot an emotion. Every frame a decision. Beauty doesn't announce itself — it waits.</p>
-                <div class="tl-expand">
-                    <div class="tl-expand-inner">My photography is 90% macro — the world in extreme close-up. A bee on a mustard flower at golden hour. The universe inside a human iris. Two friends' hands reaching for the same thing. I don't hunt for beauty. I wait for it to reveal itself.</div>
-                </div>
-            </div>
-            <div class="tl-dot-col"><div class="tl-dot"></div></div>
-            <div class="tl-empty"></div>
-        </div>
-
-        <div class="tl-item">
-            <div class="tl-empty"></div>
-            <div class="tl-dot-col"><div class="tl-dot"></div></div>
-            <div class="tl-content" onclick="toggleTL(this)">
-                <div class="tl-year">2024</div>
-                <span class="tl-emoji">🎬</span>
-                <div class="tl-title">Dhagar Dhun & Antim Darpan</div>
-                <p class="tl-body">Two complete original works — one film, one radio drama — both directed, produced, scripted, and edited entirely by me. Solo. From first word to final cut.</p>
-                <div class="tl-expand">
-                    <div class="tl-expand-inner">Dhagar Dhun was a 7-minute documentary portrait of an all-women film crew set against Jammu's Dogri culture. Every light placed by hand. Every cut intentional. Antim Darpan followed — a radio drama built on sound alone, where immersion had to be created without a single visual. Two different formats. One unwavering commitment to craft.</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tl-item">
-            <div class="tl-content" onclick="toggleTL(this)">
-                <div class="tl-year">February 2026</div>
-                <span class="tl-emoji">🎪</span>
-                <div class="tl-title">Sacred Amritsar</div>
-                <p class="tl-body">13 international delegates. Usha Uthup. Kailash Kher. Three days of controlled brilliance. By the final evening, every delegate asked for me by name.</p>
-                <div class="tl-expand">
-                    <div class="tl-expand-inner">Teamwork Arts. The Sacred Amritsar festival. I used to doubt my ability to give people a satisfactory experience. Sacred Amritsar erased that doubt permanently. 13 delegates from across the world. 72 hours of logistics, hospitality, crisis management, and human connection. Perfect record. I thrive under pressure.</div>
-                </div>
-            </div>
-            <div class="tl-dot-col"><div class="tl-dot"></div></div>
-            <div class="tl-empty"></div>
-        </div>
-
-        <div class="tl-item">
-            <div class="tl-empty"></div>
-            <div class="tl-dot-col"><div class="tl-dot"></div></div>
-            <div class="tl-content" onclick="toggleTL(this)">
-                <div class="tl-year">2025 — Present</div>
-                <span class="tl-emoji">🗞️</span>
-                <div class="tl-title">The Tribune</div>
-                <p class="tl-body">The newsroom. The real thing. Currently interning at one of India's most respected national newspapers — learning the discipline, ethics, and craft of journalism from the ground up.</p>
-                <div class="tl-expand">
-                    <div class="tl-expand-inner">Every day in this newsroom is a masterclass. Research, drafting, editorial coordination, fact-checking, story development — I am building the foundation of a career I intend to be remarkable. And I am only just getting started.</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tl-item">
-            <div class="tl-content" onclick="toggleTL(this)">
-                <div class="tl-year">The Horizon</div>
-                <span class="tl-emoji">🔮</span>
-                <div class="tl-title">What Comes Next</div>
-                <p class="tl-body">Filmmaker. Cinematographer. Visual storyteller. I am building something I believe in deeply — a body of work that lives at the intersection of culture, humanity, and truth.</p>
-                <div class="tl-expand">
-                    <div class="tl-expand-inner">In five years I see a filmmaker, a cinematographer, a visual storyteller who refused to be confined to one lane. The work is already underway. The vision is already clear. Watch this space.</div>
-                </div>
-            </div>
-            <div class="tl-dot-col"><div class="tl-dot"></div></div>
-            <div class="tl-empty"></div>
-        </div>
-
-    </div>
-</section>
-
-<!-- ==================== PORTFOLIO SECTIONS ==================== -->
-<div id="portfolio" class="exp-wrap">
-
-    <!-- 1. PHOTOGRAPHY -->
-    <div class="exp-section reveal">
-        <div class="exp-head" onclick="toggleExp(this)">
-            <div class="exp-head-left">
-                <span class="exp-num">01</span>
-                <span class="exp-icon">📸</span>
-                <div class="exp-title-wrap">
-                    <div class="exp-title">Photography</div>
-                    <div class="exp-sub">Through My Lens · Macro · Documentary · Color Grading</div>
-                </div>
-            </div>
-            <div class="exp-toggle">
-                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-        </div>
-        <div class="exp-body">
-            <div class="slideshow-wrap">
-                <div class="slide active" data-index="0">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/9dde7f78-97f6-418e-9407-05f8d6372286.jpg" alt="Photo 1" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="1">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/91940743-8572-43ef-b6d1-c423cb733801.jpg" alt="Photo 2" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="2">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/f0e9620e-02e2-4bb9-b884-7e90f479dc5f.jpg" alt="Photo 3" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="3">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/c1e69f41-ace2-4804-802c-970626a3c3ce.jpg" alt="Photo 4" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="4">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/7b120018-59b6-4151-bb03-c3cfab7eb09f.jpg" alt="Photo 5" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="5">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/b0c789f9-1c9f-4e34-b8bc-e053033b923b.jpg" alt="Photo 6" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="6">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/1bd0c5d5-33ed-4873-bd55-344aed0c0652.jpg" alt="Photo 7" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="7">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/009c91b2-fc5a-4834-b01c-43fb0f0bbbea.jpg" alt="Photo 8" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="8">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/15b187a8-3e43-44b0-9f4b-bc46827f0e4c.jpg" alt="Photo 9" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="9">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/43cc652f-5073-478d-a5fc-14609e987d70.jpg" alt="Photo 10" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="10">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/db559804-77a1-4536-a0d2-bfb383466633.jpg" alt="Photo 11" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="11">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/bf20caf0-963e-466e-839d-d2be016d0b1c.jpg" alt="Photo 12" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="12">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/dc8a5a37-3672-44de-8456-291596eb0243.jpg" alt="Photo 13" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="13">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/20250218_140450.jpg" alt="Photo 14" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="14">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/20260113_185041.jpg" alt="Photo 15" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="15">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/20250401_141928.jpg" alt="Photo 16" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="16">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/20250401_142046.jpg" alt="Photo 17" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="17">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/20250203_150222.jpg" alt="Photo 18" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="18">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/20250401_142720(0).jpg" alt="Photo 19" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="19">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/20250209_172648_resized.jpg" alt="Photo 20" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide" data-index="20">
-                    <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/20250206_141357.jpg" alt="Photo 21" loading="lazy">
-                    <div class="slide-overlay"></div>
-                </div>
-                <div class="slide-info">
-                    <div class="slide-counter" id="slideCounter">01</div>
-                    <div class="slide-dots" id="slideDots"></div>
-                    <div class="slide-controls">
-                        <button class="slide-btn" onclick="slideNav(-1)">‹</button>
-                        <button class="slide-btn" onclick="slideNav(1)">›</button>
-                    </div>
-                </div>
-            </div>
-            <div class="gallery-desc">
-                <p>"Beauty doesn't announce itself. It waits — in the curve of a petal, the weight of a dying leaf, the universe inside an iris. My camera doesn't hunt. <em style="color:var(--gold);">It listens.</em>"</p>
-                <div style="margin-top:28px;">
-                    <a href="https://instagram.com/clickswithgg" target="_blank" class="btn-silk" style="display:inline-block;">See More on @clickswithgg ↗</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 2. FILMS -->
-    <div class="exp-section reveal" id="films-section">
-        <div class="exp-head" onclick="toggleExp(this)">
-            <div class="exp-head-left">
-                <span class="exp-num">02</span>
-                <span class="exp-icon">🎬</span>
-                <div class="exp-title-wrap">
-                    <div class="exp-title">Cinematography & Films</div>
-                    <div class="exp-sub">Dhagar Dhun · Antim Darpan · Behind The Scenes</div>
-                </div>
-            </div>
-            <div class="exp-toggle">
-                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-        </div>
-        <div class="exp-body">
-            <div class="exp-inner">
-                <div class="films-grid">
-                    <div class="film-card">
-                        <div class="film-embed">
-                            <iframe src="https://www.youtube.com/embed/n0E33P1wMfY" title="Dhagar Dhun" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <div class="film-type">Documentary Film · 2024</div>
-                        <div class="film-title">Dhagar Dhun</div>
-                        <div class="film-tags">
-                            <span class="film-tag">Director</span>
-                            <span class="film-tag">Producer</span>
-                            <span class="film-tag">Writer</span>
-                            <span class="film-tag">Cinematographer</span>
-                            <span class="film-tag">Editor</span>
-                        </div>
-                        <p class="film-desc">A behind-the-scenes portrait of an all-women film crew set against Jammu's Dogri culture. Every word of dialogue written by me. Every light placed by me. Every cut — intentional. Built entirely solo. This film showed me exactly what I am capable of.</p>
-                    </div>
-                    <div class="film-card">
-                        <div class="film-embed">
-                            <iframe src="https://www.youtube.com/embed/jhvH_LeT6k8" title="Antim Darpan" allowfullscreen loading="lazy"></iframe>
-                        </div>
-                        <div class="film-type">Radio Drama</div>
-                        <div class="film-title">Antim Darpan</div>
-                        <div class="film-tags">
-                            <span class="film-tag">Director</span>
-                            <span class="film-tag">Writer</span>
-                            <span class="film-tag">Producer</span>
-                            <span class="film-tag">Editor</span>
-                        </div>
-                        <p class="film-desc">A complete radio drama built on sound, voice, and writing alone — no visuals, no shortcuts. Immersion has to be earned in a radio drama. This is the project I am most quietly proud of. Because building a world you cannot see is the hardest thing a storyteller can do.</p>
-                    </div>
-                </div>
-                <div style="margin-top:16px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--blush);margin-bottom:20px;">Behind The Scenes</div>
-                <div class="bts-reel">
-                    <div class="bts-cell">
-                        <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/Snapchat-1260649486.jpg" alt="BTS 1" loading="lazy">
-                        <div class="bts-cell-overlay"></div>
-                    </div>
-                    <div class="bts-cell">
-                        <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/A001C00094_260327_646V.jpg" alt="BTS 2" loading="lazy">
-                        <div class="bts-cell-overlay"></div>
-                    </div>
-                    <div class="bts-cell">
-                        <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/A001C00095_260327_646V~2.jpg" alt="BTS 3" loading="lazy">
-                        <div class="bts-cell-overlay"></div>
-                    </div>
-                    <div class="bts-cell">
-                        <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/A001C00107_260327_646V~2.jpg" alt="BTS 4" loading="lazy">
-                        <div class="bts-cell-overlay"></div>
-                    </div>
-                    <div class="bts-cell">
-                        <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/A001C00109_260327_646V~2.jpg" alt="BTS 5" loading="lazy">
-                        <div class="bts-cell-overlay"></div>
-                    </div>
-                    <div class="bts-cell">
-                        <video autoplay muted loop playsinline>
-                            <source src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/VN20260328_174538 (1).mp4" type="video/mp4">
-                        </video>
-                        <div class="bts-cell-overlay"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 3. JOURNALISM -->
-    <div class="exp-section reveal">
-        <div class="exp-head" onclick="toggleExp(this)">
-            <div class="exp-head-left">
-                <span class="exp-num">03</span>
-                <span class="exp-icon">🗞️</span>
-                <div class="exp-title-wrap">
-                    <div class="exp-title">Journalism</div>
-                    <div class="exp-sub">The Tribune · Published Work · Human Interest · Writing</div>
-                </div>
-            </div>
-            <div class="exp-toggle">
-                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-        </div>
-        <div class="exp-body">
-            <div class="exp-inner">
-                <div class="exp-cards">
-                    <div class="exp-card">
-                        <div class="exp-org">The Tribune</div>
-                        <div class="exp-role">Journalism Intern · Amritsar Branch</div>
-                        <div class="exp-date">2025 — Present</div>
-                        <p class="exp-desc">I was told by a judge that I had the instincts of a natural anchor. I went home and decided to take that seriously. Now I'm in one of India's most respected newsrooms every day — learning the discipline, ethics, and craft of journalism not from textbooks but from the ground up. Research. Drafting. Editorial coordination. Fact-checking. Story development. Publication.</p>
-                        <div class="exp-quote">"Every day in this newsroom is a masterclass in what journalism actually is."</div>
-                    </div>
-                </div>
-                <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;">Published Work · Bylines</div>
-                <div class="tribune-mosaic">
-                    <div class="trib-cell">
-                        <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/IMG-20260619-WA0002.jpg" alt="Tribune 1" loading="lazy">
-                        <div class="trib-caption"><div class="trib-caption-tag">Published · The Tribune</div></div>
-                    </div>
-                    <div class="trib-cell">
-                        <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/IMG-20260619-WA0000.jpg" alt="Tribune 2" loading="lazy">
-                        <div class="trib-caption"><div class="trib-caption-tag">Published · The Tribune</div></div>
-                    </div>
-                    <div class="trib-cell">
-                        <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/IMG-20260412-WA0004.jpg" alt="Tribune 3" loading="lazy">
-                        <div class="trib-caption"><div class="trib-caption-tag">Published · The Tribune</div></div>
-                    </div>
-                    <div class="trib-cell">
-                        <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/IMG-20260619-WA0001.jpg" alt="Tribune 4" loading="lazy">
-                        <div class="trib-caption"><div class="trib-caption-tag">Published · The Tribune</div></div>
-                    </div>
-                </div>
-                <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-top:56px;margin-bottom:0;">The Writing</div>
-                <div class="blogs-duo">
-                    <a href="https://teawithggblog.wordpress.com/" target="_blank" class="blog-tile">
-                        <span class="blog-tile-arrow">↗</span>
-                        <div class="blog-tile-type">Human Interest · Journalism</div>
-                        <div class="blog-tile-name">Tea With GG</div>
-                        <p class="blog-tile-desc">Human interest stories, journalistic writing, cultural narratives, and the world as seen through a reporter's instinct. This is where I report.</p>
-                    </a>
-                    <a href="https://teawithgg.wordpress.com/" target="_blank" class="blog-tile">
-                        <span class="blog-tile-arrow">↗</span>
-                        <div class="blog-tile-type">Personal · Creative · Essays</div>
-                        <div class="blog-tile-name">Tea With GG</div>
-                        <p class="blog-tile-desc">Personal essays, reflections, and the more intimate, exploratory side of my voice. Two polar styles. One writer. This is where I breathe.</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 4. EVENT MANAGEMENT -->
-    <div class="exp-section reveal">
-        <div class="exp-head" onclick="toggleExp(this)">
-            <div class="exp-head-left">
-                <span class="exp-num">04</span>
-                <span class="exp-icon">🎪</span>
-                <div class="exp-title-wrap">
-                    <div class="exp-title">Event Management</div>
-                    <div class="exp-sub">Sacred Amritsar · Teamwork Arts · Stage Hosting</div>
-                </div>
-            </div>
-            <div class="exp-toggle">
-                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-        </div>
-        <div class="exp-body">
-            <div class="exp-inner">
-                <div class="exp-cards">
-                    <div class="exp-card">
-                        <div class="exp-org">Teamwork Arts · Sacred Amritsar</div>
-                        <div class="exp-role">Delegate Management Volunteer</div>
-                        <div class="exp-date">20–22 February 2026</div>
-                        <p class="exp-desc">Thirteen people from across the world. Three days of controlled brilliance. Artists including Usha Uthup and Kailash Kher. Logistics, hospitality, emergencies, personalities — and at the centre of it all, me. I used to doubt my ability to give people a satisfactory experience. Sacred Amritsar erased that doubt permanently.</p>
-                        <div class="exp-quote">"By the final evening, every single delegate under my care asked for me by name and told my supervisor I was the best delegate manager they had ever encountered. That is not luck. That is what I do."</div>
-                    </div>
-                    <div class="exp-card">
-                        <div class="exp-org">BBK DAV Women's College</div>
-                        <div class="exp-role">Lead Event Host & Stage Anchor</div>
-                        <div class="exp-date">2024 — Present · Amritsar</div>
-                        <p class="exp-desc">Led 15 performers across 4 major college events — 2 fresher welcomes and 2 farewell ceremonies — as lead anchor and hosting coordinator. A great event doesn't just happen. It is held together by someone who knows exactly what they are doing.</p>
-                    </div>
-                </div>
-                <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--blush);margin-bottom:24px;">Sacred Amritsar · The Event</div>
-                <div class="sacred-layout">
-                    <div class="sacred-hero-img">
-                        <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/20260220_135842.jpg" alt="Sacred Amritsar" loading="lazy">
-                    </div>
-                    <div class="sacred-side-imgs">
-                        <div class="sacred-side-img">
-                            <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/20260220_202313.jpg" alt="Sacred Amritsar" loading="lazy">
-                        </div>
-                        <div class="sacred-side-img">
-                            <img src="https://raw.githubusercontent.com/TeaWithGG/teawithgg.github.io/main/75dea88e-4b55-4b21-ad3b-331e95e8b67a.jpg" alt="Sacred Amritsar" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 5. PUBLIC SPEAKING -->
-    <div class="exp-section reveal">
-        <div class="exp-head" onclick="toggleExp(this)">
-            <div class="exp-head-left">
-                <span class="exp-num">05</span>
-                <span class="exp-icon">🎤</span>
-                <div class="exp-title-wrap">
-                    <div class="exp-title">Public Speaking</div>
-                    <div class="exp-sub">Debate · Keynote · Stage Hosting · Performance</div>
-                </div>
-            </div>
-            <div class="exp-toggle">
-                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-        </div>
-        <div class="exp-body">
-            <div class="exp-inner">
-                <div class="speaking-layout">
-                    <div class="speaking-text">
-                        <p class="speaking-big-quote">The best speakers don't perform. They make every person in the room feel like the words were written <em>for them alone.</em></p>
-                        <p class="speaking-body">That is what I have been doing — on stages, in debates, at ceremonies, in rooms of hundreds — since before I had a name for it. Available for speaking engagements, panel discussions, event hosting, and keynote presentations. I bring precision, presence, and a genuine belief that every word matters.</p>
-                        <p class="speaking-body" style="margin-top:16px;">Based in Amritsar. Open to travel. Open to the right conversation.</p>
-                        <div style="margin-top:40px;">
-                            <a href="#contact" class="btn-silk" style="display:inline-block;">Book Me To Speak</a>
-                        </div>
-                    </div>
-                    <div>
-                        <ul class="topics-list">
-                            <li class="topic-row"><span class="topic-n">01</span><span class="topic-name">Spirituality & Inner Life</span></li>
-                            <li class="topic-row"><span class="topic-n">02</span><span class="topic-name">Womanhood & Feminism</span></li>
-                            <li class="topic-row"><span class="topic-n">03</span><span class="topic-name">Logical Fallacies & Critical Thinking</span></li>
-                            <li class="topic-row"><span class="topic-n">04</span><span class="topic-name">Motivation & Personal Narrative</span></li>
-                            <li class="topic-row"><span class="topic-n">05</span><span class="topic-name">Culture, Identity & Storytelling</span></li>
-                            <li class="topic-row"><span class="topic-n">06</span><span class="topic-name">Journalism & Media Today</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 6. AWARDS -->
-    <div class="exp-section reveal" id="awards-section">
-        <div class="exp-head" onclick="toggleExp(this)">
-            <div class="exp-head-left">
-                <span class="exp-num">06</span>
-                <span class="exp-icon">🏆</span>
-                <div class="exp-title-wrap">
-                    <div class="exp-title">Awards & Recognition</div>
-                    <div class="exp-sub">10+ Awards · Speaking · Media · Performance</div>
-                </div>
-            </div>
-            <div class="exp-toggle">
-                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-        </div>
-        <div class="exp-body">
-            <div class="exp-inner">
-                <p class="awards-quote">"Recognition is not the goal. But it is a record."</p>
-                <div class="awards-cats">
-                    <div>
-                        <div class="award-cat-title">🗣️ Speaking & Debate</div>
-                        <ul class="award-list">
-                            <li class="award-item"><span class="award-badge">1st Prize</span><br>Tatkalik Bhashan Pratiyogita — Prantiya Sanskriti Mahotsav (2022–23)</li>
-                            <li class="award-item"><span class="award-badge">2nd Prize</span><br>Tatkalik Bhashan Pratiyogita — Uttar Shetr Sanskriti Mahotsav (2022–23)</li>
-                            <li class="award-item"><span class="award-badge">Representative</span><br>BBK DAV at GNDU Youth Festival 2024 — Debate</li>
-                            <li class="award-item"><span class="award-badge">Appreciation Award</span><br>Speech on Shaheed Bhagat Singh's Birthday — Police Commissionerate of Amritsar</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="award-cat-title">🎙️ Media & Broadcast</div>
-                        <ul class="award-list">
-                            <li class="award-item"><span class="award-badge">1st Prize</span><br>Radio Jockey — BBK Media Fest</li>
-                            <li class="award-item"><span class="award-badge">Appreciation Award</span><br>News Reading — BBK Media Fest</li>
-                            <li class="award-item"><span class="award-badge">3rd Prize</span><br>Piece to Camera — BBK Media Fest</li>
-                            <li class="award-item"><span class="award-badge">3rd Prize</span><br>Interview Seeking — BBK Media Fest</li>
-                            <li class="award-item"><span class="award-badge">2nd Prize</span><br>Lit-Hit & PPT Competition</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="award-cat-title">🎭 Performance & Creative</div>
-                        <ul class="award-list">
-                            <li class="award-item"><span class="award-badge">1st Prize</span><br>Talent Hunt — Mime Act Competition</li>
-                            <li class="award-item"><span class="award-badge">1st Prize</span><br>Vibhagiya Ghanit-Vigyan Mela (2013–2024)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<!-- ==================== ONLINE ==================== -->
-<div class="online-strip reveal">
-    <div class="eyebrow">Find Me Online</div>
-    <h2 class="section-title">The full <em>picture.</em></h2>
-    <div class="online-trio">
-        <a href="https://instagram.com/clickswithgg" target="_blank" class="online-tile">
-            <div class="online-platform">Instagram · Photography & Color Grading</div>
-            <div class="online-handle">@clickswithgg</div>
-            <p class="online-desc">Where color tells the story. Photography, color grading, before and afters, and the eye behind the lens.</p>
-        </a>
-        <a href="https://instagram.com/newswithgg" target="_blank" class="online-tile">
-            <div class="online-platform">Instagram · Journalism</div>
-            <div class="online-handle">@newswithgg</div>
-            <p class="online-desc">Journalism in real time — stories, reporting, and the world seen through a journalist's instinct.</p>
-        </a>
-        <a href="https://instagram.com/irajnicantdothis" target="_blank" class="online-tile">
-            <div class="online-platform">Instagram · Internship Vlogs</div>
-            <div class="online-handle">@irajnicantdothis</div>
-            <p class="online-desc">Raw, unfiltered internship vlogs from inside The Tribune newsroom. The real experience of becoming a journalist.</p>
-        </a>
-    </div>
-</div>
-
-<!-- ==================== CONTACT ==================== -->
-<section id="contact">
-    <div class="contact-inner reveal">
-        <div class="eyebrow" style="justify-content:center;">Get In Touch</div>
-        <h2 class="contact-h">If you've made it here,<br>you already know.<br><em>Let's make something that matters.</em></h2>
-        <p class="contact-sub">Open to journalism collaborations, cinematography projects, photography commissions, speaking engagements, and event hosting. I bring precision, presence, and a genuine belief that the work matters.</p>
-        <a href="mailto:1996gungunarora@gmail.com" class="contact-email">1996gungunarora@gmail.com</a>
-        <div class="contact-row">
-            <div>
-                <div class="c-item-label">Phone</div>
-                <div class="c-item-val">+91 9872319243</div>
-            </div>
-            <div>
-                <div class="c-item-label">Based In</div>
-                <div class="c-item-val">Amritsar, Punjab</div>
-            </div>
-            <div>
-                <div class="c-item-label">Available For</div>
-                <div class="c-item-val">Work & Collaborations</div>
-            </div>
-        </div>
-        <div class="contact-ctas">
-            <a href="https://instagram.com/clickswithgg" target="_blank" class="btn-silk">@clickswithgg</a>
-            <a href="https://instagram.com/newswithgg" target="_blank" class="btn-linen">@newswithgg</a>
-            <a href="https://instagram.com/irajnicantdothis" target="_blank" class="btn-linen">@irajnicantdothis</a>
-        </div>
-    </div>
-</section>
-
-<!-- ==================== FOOTER ==================== -->
-<footer>
-    <div class="footer-logo">GUNGUN ARORA</div>
-    <div class="footer-copy">© 2025 · Journalist · Cinematographer · Visual Storyteller · Amritsar</div>
-</footer>
-
-<script>
-    // CUSTOM CURSOR
-    const cursor = document.getElementById('cursor');
-    const cursorRing = document.getElementById('cursorRing');
-    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-
-    document.addEventListener('mousemove', e => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        cursor.style.left = mouseX - 4 + 'px';
-        cursor.style.top  = mouseY - 4 + 'px';
-    });
-
-    function animateRing() {
-        ringX += (mouseX - ringX - 18) * 0.12;
-        ringY += (mouseY - ringY - 18) * 0.12;
-        cursorRing.style.left = ringX + 'px';
-        cursorRing.style.top  = ringY + 'px';
-        requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
-    document.querySelectorAll('a, button, [onclick]').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'scale(3)';
-            cursorRing.style.transform = 'scale(1.5)';
-            cursorRing.style.borderColor = 'rgba(212,132,154,0.6)';
-        });
-        el.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'scale(1)';
-            cursorRing.style.transform = 'scale(1)';
-            cursorRing.style.borderColor = 'rgba(200,151,58,0.4)';
-        });
-    });
-
-    // NAV SCROLL
-    window.addEventListener('scroll', () => {
-        document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
-    });
-
-    // MOBILE MENU
-    function toggleMenu() {
-        document.getElementById('hamburger').classList.toggle('open');
-        document.getElementById('mobileMenu').classList.toggle('open');
-    }
-    function closeMenu() {
-        document.getElementById('hamburger').classList.remove('open');
-        document.getElementById('mobileMenu').classList.remove('open');
-    }
-
-    // EXPAND SECTIONS
-    function toggleExp(header) {
-        const body = header.nextElementSibling;
-        const isOpen = body.classList.contains('open');
-        header.classList.toggle('active', !isOpen);
-        body.classList.toggle('open', !isOpen);
-    }
-
-    // TIMELINE
-    function toggleTL(content) {
-        const expand = content.querySelector('.tl-expand');
-        if (expand) expand.classList.toggle('open');
-    }
-
-    // SLIDESHOW
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const totalSlides = slides.length;
-
-    function buildDots() {
-        const dotsEl = document.getElementById('slideDots');
-        if (!dotsEl) return;
-        dotsEl.innerHTML = '';
-        slides.forEach((_, i) => {
-            const d = document.createElement('div');
-            d.className = 'slide-dot' + (i === 0 ? ' active' : '');
-            d.onclick = () => goToSlide(i);
-            dotsEl.appendChild(d);
-        });
-    }
-
-    function goToSlide(n) {
-        slides[currentSlide].classList.remove('active');
-        document.querySelectorAll('.slide-dot')[currentSlide]?.classList.remove('active');
-        currentSlide = (n + totalSlides) % totalSlides;
-        slides[currentSlide].classList.add('active');
-        document.querySelectorAll('.slide-dot')[currentSlide]?.classList.add('active');
-        const counter = document.getElementById('slideCounter');
-        if (counter) counter.textContent = String(currentSlide + 1).padStart(2, '0');
-    }
-
-    function slideNav(dir) { goToSlide(currentSlide + dir); }
-
-    buildDots();
-    setInterval(() => goToSlide(currentSlide + 1), 5000);
-
-    // KEYBOARD SLIDESHOW
-    document.addEventListener('keydown', e => {
-        if (e.key === 'ArrowLeft') slideNav(-1);
-        if (e.key === 'ArrowRight') slideNav(1);
-    });
-
-    // SCROLL REVEAL
-    const revealObs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) e.target.classList.add('visible');
-        });
-    }, { threshold: 0.08 });
-
-    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-    // TIMELINE REVEAL
-    const tlObs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) e.target.classList.add('visible');
-        });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.tl-item').forEach((el, i) => {
-        el.style.transitionDelay = i * 0.1 + 's';
-        tlObs.observe(el);
-    });
-</script>
-</body>
-</html>
+        
